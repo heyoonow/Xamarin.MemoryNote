@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MemoryNote.ViewModels"
+             xmlns:util="clr-namespace:MemoryNote.Util"
+             xmlns:helper="clr-namespace:MemoryNote.Helper"
+             x:Class="MemoryNote.Views.DetailPage"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:DetailViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+    <Grid BackgroundColor="{Binding MemoDetailColor, Converter={StaticResource converterColor}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="#E6E6E6" Padding="10"  Grid.Row="0">
+        <StackLayout   Orientation="Horizontal" HorizontalOptions="End">
+            <Label Text="조회수" TextColor="#BDBDBD" FontSize="8" VerticalOptions="Center" />
+            <Label Text="{Binding Model.Count}" FontSize="11"  VerticalOptions="Center" />
+            <Label Text="등록일" TextColor="#BDBDBD" FontSize="8"  VerticalOptions="Center"  />
+            <Label Text="{Binding Model.RegDT, StringFormat='{0:yyyy-MM-dd HH:mm:ss}'}"  VerticalOptions="Center" FontSize="11"/>
+        </StackLayout>
+        </Grid>
+        <ScrollView Grid.Row="1">
+        <StackLayout  Padding="15">
+            <Label Text="{Binding Contents}" FontSize="Small"/>
+        </StackLayout>
+        </ScrollView>
+        <BoxView Grid.Row="2" BackgroundColor="White"/>
+        <StackLayout  Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Center">
+            <ImageButton Source="{Binding ImageFavorit}" Command="{Binding FavoritCommand}" BackgroundColor="Transparent"  WidthRequest="30" />
+            <ImageButton Source="share.png" Command="{Binding ShareCommand}" BackgroundColor="Transparent"  WidthRequest="30" />
+            <!--<Label Text="{Binding Like}" FontSize="Large" VerticalOptions="Center"/>-->
+        </StackLayout>
+        <StackLayout Grid.Row="4" Orientation="Horizontal" Padding="5,0">
+            <Button Text="삭제" Command="{Binding DeleteCommand}" HorizontalOptions="FillAndExpand"></Button>
+            <Button Text="수정" Command="{Binding ModifyCommand}" HorizontalOptions="FillAndExpand"></Button>
+            <Button Text="목록" Command="{Binding PrevCommand}" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
+        <util:AdMobView Grid.Row="5" AdUnitId="ca-app-pub-4619884321108266/9697203061" />
+        
+    </Grid>
+</ContentPage>

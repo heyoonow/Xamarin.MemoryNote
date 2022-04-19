@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Asset\Image\calendar.png" />
+    <None Remove="Asset\Image\disk.png" />
+    <None Remove="Asset\Image\edit.png" />
+    <None Remove="Asset\Image\filter.png" />
+    <None Remove="Asset\Image\filter_fill.png" />
+    <None Remove="Asset\Image\heart.png" />
+    <None Remove="Asset\Image\heart_fill.png" />
+    <None Remove="Asset\Image\icon_about.png" />
+    <None Remove="Asset\Image\icon_feed.png" />
+    <None Remove="Asset\Image\like.png" />
+    <None Remove="Asset\Image\list.png" />
+    <None Remove="Asset\Image\next.png" />
+    <None Remove="Asset\Image\search.png" />
+    <None Remove="Asset\Image\searching.png" />
+    <None Remove="Asset\Image\setting.png" />
+    <None Remove="Asset\Image\share.png" />
+    <None Remove="Asset\Image\view.png" />
+    <None Remove="Asset\Image\write.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Asset\Image\calendar.png" />
+    <EmbeddedResource Include="Asset\Image\disk.png" />
+    <EmbeddedResource Include="Asset\Image\edit.png" />
+    <EmbeddedResource Include="Asset\Image\filter.png" />
+    <EmbeddedResource Include="Asset\Image\filter_fill.png" />
+    <EmbeddedResource Include="Asset\Image\heart.png" />
+    <EmbeddedResource Include="Asset\Image\heart_fill.png" />
+    <EmbeddedResource Include="Asset\Image\icon_about.png" />
+    <EmbeddedResource Include="Asset\Image\icon_feed.png" />
+    <EmbeddedResource Include="Asset\Image\like.png" />
+    <EmbeddedResource Include="Asset\Image\list.png" />
+    <EmbeddedResource Include="Asset\Image\next.png" />
+    <EmbeddedResource Include="Asset\Image\search.png" />
+    <EmbeddedResource Include="Asset\Image\searching.png" />
+    <EmbeddedResource Include="Asset\Image\setting.png" />
+    <EmbeddedResource Include="Asset\Image\share.png" />
+    <EmbeddedResource Include="Asset\Image\view.png" />
+    <EmbeddedResource Include="Asset\Image\write.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\HeyNow.App\HeyNow.Std.Biz\HeyNow.Std.Biz.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v12.0\Mono.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\DetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Setting\SettingColorPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\WritePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

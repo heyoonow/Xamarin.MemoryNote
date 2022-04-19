@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MemoryNote.ViewModels.Setting"
+             xmlns:util="clr-namespace:MemoryNote.Util"
+             x:Class="MemoryNote.Views.Setting.SettingColorPage"
+             xmlns:helper="clr-namespace:MemoryNote.Helper"
+             Title="색상설정">
+    <ContentPage.BindingContext>
+        <vm:SettingColorViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#EEE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <ScrollView >
+                <StackLayout Margin="10">
+                    <StackLayout >
+                        <Label  Text="배경색상" TextColor="Black"/>
+
+                        <Grid HeightRequest="80" VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Column="0" BackgroundColor="#FFFFFF" Command="{Binding SelectColorCommand}" CommandParameter="#FFFFFF" />
+                            <Button Grid.Column="1" BackgroundColor="#F7F2E0" Command="{Binding SelectColorCommand}" CommandParameter="#F7F2E0" />
+                            <Button Grid.Column="2" BackgroundColor="#ECF8E0" Command="{Binding SelectColorCommand}" CommandParameter="#ECF8E0" />
+                            <Button Grid.Column="3" BackgroundColor="#E0F8E0" Command="{Binding SelectColorCommand}" CommandParameter="#E0F8E0" />
+                            <Button Grid.Column="4" BackgroundColor="#E0E0F8" Command="{Binding SelectColorCommand}" CommandParameter="#E0E0F8" />
+                            <Button Grid.Column="5" BackgroundColor="#ECE0F8" Command="{Binding SelectColorCommand}" CommandParameter="#ECE0F8" />
+                        </Grid>
+
+                    </StackLayout>
+                    <StackLayout IsVisible="false">
+                        <Label Text="목록색상" TextColor="Black"/>
+
+                        <Grid HeightRequest="80" VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Column="0" BackgroundColor="#FFFFFF" Command="{Binding SelectListColorCommand}" CommandParameter="#FFFFFF" />
+                            <Button Grid.Column="1" BackgroundColor="#F7F2E0" Command="{Binding SelectListColorCommand}" CommandParameter="#F7F2E0" />
+                            <Button Grid.Column="2" BackgroundColor="#ECF8E0" Command="{Binding SelectListColorCommand}" CommandParameter="#ECF8E0" />
+                            <Button Grid.Column="3" BackgroundColor="#E0F8E0" Command="{Binding SelectListColorCommand}" CommandParameter="#E0F8E0" />
+                            <Button Grid.Column="4" BackgroundColor="#E0E0F8" Command="{Binding SelectListColorCommand}" CommandParameter="#E0E0F8" />
+                            <Button Grid.Column="5" BackgroundColor="#ECE0F8" Command="{Binding SelectListColorCommand}" CommandParameter="#ECE0F8" />
+                        </Grid>
+
+                    </StackLayout>
+
+                    <StackLayout >
+                        <Label Text="상세색상" TextColor="Black"/>
+
+                        <Grid HeightRequest="80" VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Column="0" BackgroundColor="#FFFFFF" Command="{Binding SelectDetailColorCommand}" CommandParameter="#FFFFFF" />
+                            <Button Grid.Column="1" BackgroundColor="#F7F2E0" Command="{Binding SelectDetailColorCommand}" CommandParameter="#F7F2E0" />
+                            <Button Grid.Column="2" BackgroundColor="#ECF8E0" Command="{Binding SelectDetailColorCommand}" CommandParameter="#ECF8E0" />
+                            <Button Grid.Column="3" BackgroundColor="#E0F8E0" Command="{Binding SelectDetailColorCommand}" CommandParameter="#E0F8E0" />
+                            <Button Grid.Column="4" BackgroundColor="#E0E0F8" Command="{Binding SelectDetailColorCommand}" CommandParameter="#E0E0F8" />
+                            <Button Grid.Column="5" BackgroundColor="#ECE0F8" Command="{Binding SelectDetailColorCommand}" CommandParameter="#ECE0F8" />
+                        </Grid>
+
+                    </StackLayout>
+                    <Grid Padding="20" BackgroundColor="{Binding BackgroundColor, Converter={StaticResource converterColor}}" HeightRequest="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Frame IsVisible="false" Grid.Row="0"  BackgroundColor="{Binding MemoListColor, Converter={StaticResource converterColor}}" HeightRequest="200">
+                            <Label Text="목록"/>
+                        </Frame>
+                        <Frame Grid.Row="0" BackgroundColor="{Binding MemoDetailColor, Converter={StaticResource converterColor}}" HeightRequest="200">
+                            <Label Text="상세"/>
+
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+
+            </ScrollView>
+
+
+            <util:AdMobView Grid.Row="1" AdUnitId="ca-app-pub-4619884321108266/9697203061" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

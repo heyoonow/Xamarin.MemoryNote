@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MemoryNote.Views.ListPage"
+             xmlns:local="clr-namespace:MemoryNote.ViewModels"  
+             xmlns:vm="clr-namespace:MemoryNote.ViewModels"
+             xmlns:helper="clr-namespace:MemoryNote.Helper"
+             Title="메모리노트"
+             xmlns:util="clr-namespace:MemoryNote.Util">
+    <ContentPage.BindingContext>
+        <vm:ListViewModel x:Name="vm" />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Grid BackgroundColor="{Binding BackgroundColor, Converter={StaticResource converterColor}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="90" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <RefreshView  Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Vertical"  Padding="5">
+                                    <Frame BackgroundColor="#FAFAFA" CornerRadius="10" Padding="5" >
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid HorizontalOptions="FillAndExpand" Grid.Row="1" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Text="{Binding Contents}" LineBreakMode="NoWrap" FontSize="16" MaxLines="1" />
+                                                <Label Text="{Binding ContentsLength}" TextColor="#424242" HorizontalOptions="End" FontSize="16" Grid.Column="1" />
+                                            </Grid>
+                                            <Image IsVisible="{Binding Favorit}" WidthRequest="10" Source="heart_fill.png" HorizontalOptions="Start"/>
+                                            <StackLayout Margin="0,10,0,0" Grid.Row="0" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="End">
+                                                
+                                                <Label Text="조회수" TextColor="#BDBDBD" FontSize="8" VerticalOptions="End" />
+                                                <Label Text="{Binding Count}" FontSize="11" />
+                                                <!--<Label Text="좋아요" TextColor="#BDBDBD" FontSize="8" VerticalOptions="End" />
+                                                <Label Text="{Binding Like}" FontSize="11"/>-->
+                                                <Label Text="등록일" TextColor="#BDBDBD" FontSize="8" VerticalOptions="End"  />
+                                                <Label Text="{Binding RegDT, StringFormat='{0:yyyy-MM-dd HH:mm:ss}'}" FontSize="11"/>
+
+
+                                            </StackLayout>
+                                            <StackLayout IsVisible="{Binding IsModify}" Margin="0,10,0,0" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="End">
+                                                <Label Text="수정일" TextColor="#BDBDBD" FontSize="8" VerticalOptions="End"  />
+                                                <Label Text="{Binding ModifyDT, StringFormat='{0:yyyy-MM-dd HH:mm:ss}'}" FontSize="11"/>
+                                            </StackLayout>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ListViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}">
+                                                </TapGestureRecognizer>
+
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+                <util:AdMobView Grid.Row="1" AdUnitId="ca-app-pub-4619884321108266/9697203061" />
+                <Grid IsVisible="{Binding IsFilter}" Grid.Row="2"  Padding="3">
+                    <Grid.RowDefinitions>
+                        <!--<ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>-->
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <SearchBar  Grid.Column="0" SearchCommand="{Binding SearchCommand}" Text="{Binding SearchText}" Placeholder="메모 검색" />
+                    <StackLayout Orientation="Horizontal" Grid.Row="1">
+                        <Label Text="정렬선택 " VerticalOptions="Center" FontSize="Small"/>
+                        <Picker Title="메모정렬"
+                        Grid.Row="1"
+                    FontSize="Small"
+                            TitleColor="#BDBDBD"
+                            BackgroundColor="Transparent"
+                    ItemsSource="{Binding ListMemoOrder}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding SelectMemoOrder, Mode=TwoWay}"/>
+                </StackLayout>
+                </Grid>
+            </Grid>
+            <Frame 
+                AbsoluteLayout.LayoutFlags="PositionProportional" 
+                AbsoluteLayout.LayoutBounds=".95,.85,50,50" 
+                BackgroundColor="#A9E2F3"
+                BorderColor="White"
+                CornerRadius="25"
+                Padding="0"
+                HasShadow="True"
+                >
+                <ImageButton Source="{helper:ImageResource MemoryNote.Asset.Image.search.png}" 
+                         BackgroundColor="Transparent" 
+                             Command="{Binding FilterCommand}"
+                             AbsoluteLayout.LayoutFlags="PositionProportional" 
+                AbsoluteLayout.LayoutBounds=".95,.75,50,50" 
+                         CornerRadius="25"
+                         Padding="10"
+                        >
+                </ImageButton>
+            </Frame>
+            
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
