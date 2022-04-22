@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:MemoryNote.ViewModels"
              xmlns:helper="clr-namespace:MemoryNote.Helper"
              xmlns:util="clr-namespace:MemoryNote.Util"
+
              Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:WriteViewModel x:Name="vm" />

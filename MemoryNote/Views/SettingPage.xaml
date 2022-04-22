@@ -12,7 +12,7 @@
     <ContentPage.Content>
         <Grid  BackgroundColor="{Binding BackgroundColor, Converter={StaticResource converterColor}}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
             <ScrollView Padding="5" >
@@ -22,6 +22,7 @@
                         <RowDefinition Height="70" /> 
                         <RowDefinition Height="70" /> 
                         <RowDefinition Height="70" /> 
+                        
                     </Grid.RowDefinitions>
                     <Frame Grid.Row="0" Padding="0" BackgroundColor="#F2F2F2" BorderColor="#A4A4A4">
                     <StackLayout VerticalOptions="Center" Padding="10,0,0,0">
